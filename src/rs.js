@@ -130,8 +130,11 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
             room.setCustomStadium(getRealSoccerMap());
             room.sendAnnouncement("Only Super Admins can change the stadium", byPlayer.id, 0xFF0000, "bold", 2);
         }
-    } else {
+    } else if(newStadiumName != "Real Soccer Revolution") {
         map = "RSR";
+    }
+    else {
+        map = "Warmup";
     }
 }
 
