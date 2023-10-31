@@ -42,19 +42,11 @@ var gameTime = 10; //default game time if 0 is selected
 var map = "RSR";
 var superAdmins = [];
 
-var room = HBInit({
-    roomName: roomName,
-    password: roomPassword,
-    maxPlayers: maxPlayers,
-    public: roomPublic,
-    geo: {code: "PL", lat: 52.237049, lon: 21.017532},
-    noPlayer: true,
-    token: token
-});
+var room = HBInit();
 
 // Plugin setup
 room.pluginSpec = {
-    name: "haxball-rs",
+    name: "Clarioo/haxball-rs",
     author: "Clarioo",
     version: "1.0.0",
     config: {
