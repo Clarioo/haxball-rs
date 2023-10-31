@@ -43,6 +43,7 @@ var roomLink = "";
 var gameTime = 8; //default game time if 0 is selected
 var map = "RSR";
 var superAdmins = [];
+var isWarmup = false;
 
 var room = HBInit();
 
@@ -123,10 +124,11 @@ room.onRoomLink = function (url) {
 room.onStadiumChange = function (newStadiumName, byPlayer) {
     if (byPlayer != null) {
         if(superAdmins.indexOf(byPlayer.id) == -1) {
+            isWarmup = false;
             room.setCustomStadium(getRealSoccerMap());
             room.sendAnnouncement("Only Super Admins can change the stadium", byPlayer.id, 0xFF0000, "bold", 2);
         }
-    } else if(newStadiumName == "Real Soccer Revolution") {
+    } else if(!isWarmup) {
         map = "RSR";
     }
     else {
@@ -366,12 +368,14 @@ room.onPlayerChat = function (player, message) {
             }
         } else if (args[0] == "rs" && player.admin) {
             if (room.getScores() == null) {
+                isWarmup = false;
                 room.setCustomStadium(getRealSoccerMap());
             } else {
                 whisper("Cannot change map while game in progress", player.id);
             }
         } else if (args[0] == "warmup" && player.admin) {
             if (room.getScores() == null) {
+                isWarmup = true;
                 room.setCustomStadium(getWarmupMap());
             } else {
                 whisper("Cannot change map while game in progress", player.id);
