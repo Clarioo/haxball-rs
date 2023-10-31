@@ -16,7 +16,6 @@ var gkTimeOut = 600; // 10 seconds (var is in game ticks)
 var ckTimeOut = 600; // 10 seconds (var is in game ticks)
 var throwinDistance = 230; // distance players can move the ball during throw in
 var mapBGColor = "86A578"; // default 718C5A
-var superAdminCode = "648259"; // !admin 505050
 var allowPublicAdmin = true; // if true then !admin command is enabled
 var powerShotMode = true;
 
