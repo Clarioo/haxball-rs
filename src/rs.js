@@ -38,11 +38,7 @@ function getWarmupMap(){
 // ------------------------------------------------
 // Global Variables
 // ------------------------------------------------
-var roomName = "Real Soccer Revolution";
 var roomPassword = null;
-var maxPlayers = 20;
-var roomPublic = false;
-var token = "";
 var roomLink = "";
 var gameTime = 8; //default game time if 0 is selected
 var map = "RSR";
@@ -130,7 +126,7 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
             room.setCustomStadium(getRealSoccerMap());
             room.sendAnnouncement("Only Super Admins can change the stadium", byPlayer.id, 0xFF0000, "bold", 2);
         }
-    } else if(newStadiumName != "Real Soccer Revolution") {
+    } else if(newStadiumName == "Real Soccer Revolution") {
         map = "RSR";
     }
     else {
