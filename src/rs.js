@@ -223,6 +223,7 @@ room.onPlayerBallKick = function (player) {
             game.powershotCounter = 0;
             game.powershotID = 0;
             game.powershotTrigger = false;
+            room.setDiscProperties(0, {color: "0xffffff"});
             if (parseFloat(room.getDiscProperties(0).invMass.toFixed(2)) != 1.05) {
                 room.setDiscProperties(0, {invMass: 1.05});
             }
@@ -369,7 +370,7 @@ room.onPlayerChat = function (player, message) {
             }
         } else if (args[0] == "rs" && player.admin) {
             if (room.getScores() == null) {
-                room.setCustomStadium(getWarmupMap());
+                room.setCustomStadium(getRealSoccerMap());
             } else {
                 whisper("Cannot change map while game in progress", player.id);
             }
@@ -992,6 +993,7 @@ function handleBallTouch() {
                 if (game.powershotID != player.id) {
                     game.powershotID = player.id;
                     game.powershotTrigger = false;
+                    room.setDiscProperties(0, {color: "0xffffff"});
                     game.powershotCounter = 0;
                 } else {
                     game.powershotCounter++;
@@ -1000,6 +1002,7 @@ function handleBallTouch() {
                         room.setDiscProperties(0, {invMass: 2});
                         room.sendAnnouncement("POWERSHOT ACTIVATED!", game.powershotID, 0x33dd33, "bold", 1);
                         game.powershotTrigger = true;
+                        room.setDiscProperties(0, {color: "0xffd700"});
                     }
                 }
             }
@@ -1013,6 +1016,7 @@ function handleBallTouch() {
         //=========== POWERSHOT CODE ===========
         if (distanceToBall > triggerDistance + 3 && player.id == game.powershotID && game.powershotTrigger == true && powerShotMode == true) {
             game.powershotTrigger = false;
+            room.setDiscProperties(0, {color: "0xffffff"});
             game.powershotCounter = 0;
             game.powershotid = 0;
             if (parseFloat(room.getDiscProperties(0).invMass.toFixed(2)) != 1.05) {
