@@ -46,7 +46,7 @@ var room = HBInit();
 
 // Plugin setup
 room.pluginSpec = {
-    name: "Clarioo/haxball-rs",
+    name: "rs",
     author: "Clarioo",
     version: "1.0.0",
     config: {
