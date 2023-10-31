@@ -369,7 +369,7 @@ room.onPlayerChat = function (player, message) {
             }
         } else if (args[0] == "rs" && player.admin) {
             if (room.getScores() == null) {
-                room.setCustomStadium(getRealSoccerMap());
+                room.setCustomStadium(getWarmupMap());
             } else {
                 whisper("Cannot change map while game in progress", player.id);
             }
