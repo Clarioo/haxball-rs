@@ -53,6 +53,17 @@ var room = HBInit({
     token: token
 });
 
+// Plugin setup
+room.pluginSpec = {
+    name: "haxball-rs",
+    author: "Clarioo",
+    version: "1.0.0",
+    config: {
+        password: "",
+    }
+}
+
+
 
 // -------------------------------------------------
 // Classes
@@ -293,7 +304,7 @@ room.onPlayerChat = function (player, message) {
                 whisper("Admin is already present or !admin command is not allowed", player.id);
             }
         } else if (args[0] == "admin" && args.length == 2) {
-            if (args[1] == superAdminCode) {
+            if (args[1] == room.getConfig().password) {
                 room.setPlayerAdmin(player.id, true);
                 if (superAdmins.indexOf(player.id) === -1) {
                     superAdmins.push(player.id);
@@ -357,12 +368,6 @@ room.onPlayerChat = function (player, message) {
                 whisper("Only Super Admins can clear password", player.id);
             }
         } else if (args[0] == "rs" && player.admin) {
-            if (room.getScores() == null) {
-                room.setCustomStadium(getRealSoccerMap());
-            } else {
-                whisper("Cannot change map while game in progress", player.id);
-            }
-        } else if (args[0] == "warmup" && player.admin) {
             if (room.getScores() == null) {
                 room.setCustomStadium(getRealSoccerMap());
             } else {
