@@ -57,19 +57,19 @@ function onPlayerJoinHandler(player) {
 
 function onPlayerChat(player, message) {
     const roles = room.getPlugin('sav/roles');
-    console.log(roles);
+    // console.log(roles);
     // if(roles.getPlayerRoles(player.id).includes("host") === false) {
     //     room.sendAnnouncement(`You are not host.`);
     //     return;
     // }
-    if (message.startsWith("!addException")) {
-        const playerName = message.split(" ")[1];
-        addPlayerException(playerName);
-    }
-    else if (message.startsWith("!removeException")) {
-        const playerName = message.split(" ")[1];
-        removePlayerException(playerName);
-    }
+    // if (message.startsWith("!addException")) {
+    //     const playerName = message.split(" ")[1];
+    //     addPlayerException(playerName);
+    // }
+    // else if (message.startsWith("!removeException")) {
+    //     const playerName = message.split(" ")[1];
+    //     removePlayerException(playerName);
+    // }
 }
 
 function addPlayerException(playerName) {
