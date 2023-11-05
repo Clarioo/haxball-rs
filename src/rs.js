@@ -57,10 +57,10 @@ room.pluginSpec = {
     },
     order: {
         'onPlayerChat': {
-            after : ["sav/roles"],
+            'after' : ["sav/roles"],
         },
         'onPlayerJoin': {
-            after : ["sav/roles"],
+            'after' : ["sav/roles"],
         },
     }
 }
