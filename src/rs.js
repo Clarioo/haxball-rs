@@ -54,6 +54,14 @@ room.pluginSpec = {
     version: "1.0.1",
     config: {
         password: "",
+    },
+    order: {
+        'onPlayerChat': {
+            after : ["sav/roles"],
+        },
+        'onPlayerJoin': {
+            after : ["sav/roles"],
+        },
     }
 }
 
