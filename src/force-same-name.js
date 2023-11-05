@@ -55,12 +55,35 @@ function onPlayerJoinHandler(player) {
     conns[player.conn] = player.name;
 }
 
+function onPlayerChat(player, message) {
+    if (message.startsWith("!addException")) {
+        const playerName = message.split(" ")[1];
+        addPlayerException(playerName);
+    }
+    else if (message.startsWith("!removeException")) {
+        const playerName = message.split(" ")[1];
+        removePlayerException(playerName);
+    }
+}
+
 function addPlayerException(playerName) {
+    if(playerName === undefined || playerName === "") {
+        room.sendAnnouncment(`Please specify player name.`);
+        return;
+    }
+    if(room.getConfig().playersNotAffected.includes(playerName)) {
+        room.sendAnnouncment(`Player ${playerName} is already in exception list.`);
+        return;
+    }
     room.getConfig().playersNotAffected.push(playerName);
     room.sendAnnouncment(`Player ${playerName} added to exception list.`);
 }
 
 function removePlayerException(playerName) {
+    if(playerName === undefined || playerName === "") {
+        room.sendAnnouncment(`Please specify player name.`);
+        return;
+    }
     const index = room.getConfig().playersNotAffected.indexOf(playerName);
     if (index > -1) {
         room.getConfig().playersNotAffected.splice(index, 1);
@@ -89,3 +112,4 @@ function onRestoreHandler(data) {
 room.onPlayerJoin = onPlayerJoinHandler;
 room.onPersist = onPersistHandler;
 room.onRestore = onRestoreHandler;
+room.onPlayerChat = onPlayerChat;
