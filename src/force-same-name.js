@@ -57,10 +57,11 @@ function onPlayerJoinHandler(player) {
 
 function onPlayerChat(player, message) {
     const roles = room.getPlugin('sav/roles');
-    if(roles.getPlayerRoles(player.id).includes("host") === false) {
-        room.sendAnnouncement(`You are not host.`);
-        return;
-    }
+    console.log(roles);
+    // if(roles.getPlayerRoles(player.id).includes("host") === false) {
+    //     room.sendAnnouncement(`You are not host.`);
+    //     return;
+    // }
     if (message.startsWith("!addException")) {
         const playerName = message.split(" ")[1];
         addPlayerException(playerName);
