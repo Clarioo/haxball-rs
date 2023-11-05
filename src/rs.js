@@ -127,7 +127,9 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
             isWarmup = false;
             room.setCustomStadium(getRealSoccerMap());
             room.sendAnnouncement("Only Super Admins can change the stadium", byPlayer.id, 0xFF0000, "bold", 2);
+            map = "RSR";
         }
+        map = newStadiumName;
     } else if(!isWarmup) {
         announce("Match begins!");
         map = "RSR";
