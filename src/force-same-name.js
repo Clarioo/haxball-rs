@@ -66,6 +66,9 @@ function removePlayerException(playerName) {
         room.getConfig().playersNotAffected.splice(index, 1);
         room.sendAnnouncment(`Player ${playerName} removed from exception list.`);
     }
+    else {
+        room.sendAnnouncment(`There is no player ${playerName} in exception list.`);
+    }
 }
 
 function onPersistHandler() {

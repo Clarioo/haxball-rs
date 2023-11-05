@@ -419,6 +419,9 @@ room.onPlayerChat = function (player, message) {
                     var forceSameName = room.getPlugin('force-same-name');
                     forceSameName.addPlayerException(args[1]);
                 }
+                else {
+                    whisper("Add nickname as parameter: !addException nickname", player.id);
+                }
             }
         }
         else if (args[0] == "removeException") {
@@ -426,6 +429,9 @@ room.onPlayerChat = function (player, message) {
                 if(args.length == 2){
                     var forceSameName = room.getPlugin('force-same-name');
                     forceSameName.removePlayerException(args[1]);
+                }
+                else {
+                    whisper("Add nickname as parameter: !removeException nickname", player.id);
                 }
             }
         }
