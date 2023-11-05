@@ -8,7 +8,7 @@
 var room = HBInit();
 
 room.pluginSpec = {
-    name: `sav/force-same-name`,
+    name: `force-same-name`,
     author: `saviola`,
     version: `1.0.0`,
     config: {
