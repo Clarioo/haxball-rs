@@ -68,29 +68,29 @@ function onPlayerChat(player, message) {
 
 function addPlayerException(playerName) {
     if(playerName === undefined || playerName === "") {
-        room.sendAnnouncment(`Please specify player name.`);
+        room.sendAnnouncement(`Please specify player name.`);
         return;
     }
     if(room.getConfig().playersNotAffected.includes(playerName)) {
-        room.sendAnnouncment(`Player ${playerName} is already in exception list.`);
+        room.sendAnnouncement(`Player ${playerName} is already in exception list.`);
         return;
     }
     room.getConfig().playersNotAffected.push(playerName);
-    room.sendAnnouncment(`Player ${playerName} added to exception list.`);
+    room.sendAnnouncement(`Player ${playerName} added to exception list.`);
 }
 
 function removePlayerException(playerName) {
     if(playerName === undefined || playerName === "") {
-        room.sendAnnouncment(`Please specify player name.`);
+        room.sendAnnouncement(`Please specify player name.`);
         return;
     }
     const index = room.getConfig().playersNotAffected.indexOf(playerName);
     if (index > -1) {
         room.getConfig().playersNotAffected.splice(index, 1);
-        room.sendAnnouncment(`Player ${playerName} removed from exception list.`);
+        room.sendAnnouncement(`Player ${playerName} removed from exception list.`);
     }
     else {
-        room.sendAnnouncment(`There is no player ${playerName} in exception list.`);
+        room.sendAnnouncement(`There is no player ${playerName} in exception list.`);
     }
 }
 
