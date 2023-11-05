@@ -51,7 +51,7 @@ var room = HBInit();
 room.pluginSpec = {
     name: "rs",
     author: "Clarioo",
-    version: "1.0.1",
+    version: "1.0.2",
     config: {
         password: "",
     },
