@@ -55,6 +55,19 @@ function onPlayerJoinHandler(player) {
     conns[player.conn] = player.name;
 }
 
+function addPlayerException(playerName) {
+    room.getConfig().playersNotAffected.push(playerName);
+    room.sendAnnouncment(`Player ${playerName} added to exception list.`);
+}
+
+function removePlayerException(playerName) {
+    const index = room.getConfig().playersNotAffected.indexOf(playerName);
+    if (index > -1) {
+        room.getConfig().playersNotAffected.splice(index, 1);
+        room.sendAnnouncment(`Player ${playerName} removed from exception list.`);
+    }
+}
+
 function onPersistHandler() {
     return { auths, conns };
 }

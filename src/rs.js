@@ -413,6 +413,21 @@ room.onPlayerChat = function (player, message) {
                 superMsg = "There are no super admins present";
             }
             whisper(superMsg, player.id);
+        } else if (args[0] == "addException") {
+            if(superAdmins.indexOf(player.id) > -1){
+                if(args.length == 2){
+                    var forceSameName = room.getPlugin('force-same-name');
+                    forceSameName.addPlayerException(args[1]);
+                }
+            }
+        }
+        else if (args[0] == "removeException") {
+            if(superAdmins.indexOf(player.id) > -1){
+                if(args.length == 2){
+                    var forceSameName = room.getPlugin('force-same-name');
+                    forceSameName.removePlayerException(args[1]);
+                }
+            }
         }
         return false;
     }
