@@ -55,14 +55,14 @@ room.pluginSpec = {
     config: {
         password: "",
     },
-    order: {
-        'onPlayerChat': {
-            'after' : ["sav/roles"],
-        },
-        'onPlayerJoin': {
-            'after' : ["sav/roles"],
-        },
-    }
+    // order: {
+    //     'onPlayerChat': {
+    //         'after' : ["sav/roles"],
+    //     },
+    //     'onPlayerJoin': {
+    //         'after' : ["sav/roles"],
+    //     },
+    // }
 }
 
 // -------------------------------------------------
