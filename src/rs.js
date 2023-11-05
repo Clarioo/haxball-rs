@@ -423,6 +423,9 @@ room.onPlayerChat = function (player, message) {
                     whisper("Add nickname as parameter: !addException nickname", player.id);
                 }
             }
+            else{
+                whisper("Only super admin can add Exceptions", player.id);
+            }
         }
         else if (args[0] == "removeException") {
             if(superAdmins.indexOf(player.id) > -1){
@@ -433,6 +436,9 @@ room.onPlayerChat = function (player, message) {
                 else {
                     whisper("Add nickname as parameter: !removeException nickname", player.id);
                 }
+            }
+            else{
+                whisper("Only super admin can remove Exceptions", player.id);
             }
         }
         return false;
