@@ -9,7 +9,7 @@ var room = HBInit();
 
 room.pluginSpec = {
     name: `force-same-name`,
-    author: `saviola`,
+    author: `Clarioo`,
     version: `1.0.0`,
     config: {
         playersNotAffected: [],
