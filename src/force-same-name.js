@@ -56,7 +56,7 @@ function onPlayerJoinHandler(player) {
 }
 
 function onPlayerChat(player, message) {
-    const roles = room.getPlugin('sav/roles');
+    // const roles = room.getPlugin('sav/roles');
     // console.log(roles);
     // if(roles.getPlayerRoles(player.id).includes("host") === false) {
     //     room.sendAnnouncement(`You are not host.`);
