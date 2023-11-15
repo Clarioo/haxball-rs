@@ -156,4 +156,4 @@ function onRestoreHandler(data) {
 room.onPlayerJoin = onPlayerJoinHandler;
 room.onPersist = onPersistHandler;
 room.onRestore = onRestoreHandler;
-// room.onPlayerChat = onPlayerChat;
+room.onPlayerChat = onPlayerChat;
