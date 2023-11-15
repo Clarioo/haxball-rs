@@ -113,28 +113,28 @@ function removePlayerException(sender, playerName) {
 }
 
 function removePlayerFromAuths(sender, playerName) {
-    var resultAuth = room.auths.find(obj => {
+    var resultAuth = auths.filter(obj => {
         return obj === playerName;
     });
     if(resultAuth === undefined || resultAuth === "") {
         room.sendAnnouncement(`There is no player ${playerName} in auths list.`, sender.id);
         return;
     }
-    const index = room.auths.indexOf(resultAuth);
+    const index = auths.indexOf(resultAuth);
     if (index > -1) {
-        room.auths.splice(index, 1);
+        auths.splice(index, 1);
     }
     
-    var resultCon = room.conns.find(obj => {
+    var resultCon = conns.filter(obj => {
         return obj === playerName;
     });
     if(resultCon === undefined || resultCon === "") {
         room.sendAnnouncement(`There is no player ${playerName} in conns list.`, sender.id);
         return;
     }
-    const index2 = room.conns.indexOf(resultCon);
+    const index2 = conns.indexOf(resultCon);
     if (index2 > -1) {
-        room.conns.splice(index2, 1);
+        conns.splice(index2, 1);
     }
     room.sendAnnouncement(`Player ${playerName} removed from auths and conns list.`, sender.id);
 }
