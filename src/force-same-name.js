@@ -113,7 +113,7 @@ function removePlayerException(sender, playerName) {
 }
 
 function removePlayerFromAuths(sender, playerName) {
-    var resultAuth = room.auths.filter(obj => {
+    var resultAuth = room.auths.find(obj => {
         return obj === playerName;
     });
     if(resultAuth === undefined || resultAuth === "") {
@@ -125,7 +125,7 @@ function removePlayerFromAuths(sender, playerName) {
         room.auths.splice(index, 1);
     }
     
-    var resultCon = room.cons.filter(obj => {
+    var resultCon = room.conns.find(obj => {
         return obj === playerName;
     });
     if(resultCon === undefined || resultCon === "") {
