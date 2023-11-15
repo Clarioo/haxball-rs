@@ -113,30 +113,18 @@ function removePlayerException(sender, playerName) {
 }
 
 function removePlayerFromAuths(sender, playerName) {
-    var resultAuth = auths.filter(obj => {
-        return obj === playerName;
-    });
-    if(resultAuth === undefined || resultAuth === "") {
-        room.sendAnnouncement(`There is no player ${playerName} in auths list.`, sender.id);
-        return;
+    for(var key in auths) {
+        if(auths[key] === playerName) {
+            delete auths[key];
+            room.sendAnnouncement(`Player ${playerName} removed from auths list.`, sender.id);
+        }
     }
-    const index = auths.indexOf(resultAuth);
-    if (index > -1) {
-        auths.splice(index, 1);
+    for(var key in conns) {
+        if(conns[key] === playerName) {
+            delete conns[key];
+            room.sendAnnouncement(`Player ${playerName} removed from conns list.`, sender.id);
+        }
     }
-    
-    var resultCon = conns.filter(obj => {
-        return obj === playerName;
-    });
-    if(resultCon === undefined || resultCon === "") {
-        room.sendAnnouncement(`There is no player ${playerName} in conns list.`, sender.id);
-        return;
-    }
-    const index2 = conns.indexOf(resultCon);
-    if (index2 > -1) {
-        conns.splice(index2, 1);
-    }
-    room.sendAnnouncement(`Player ${playerName} removed from auths and conns list.`, sender.id);
 }
 
 function onPersistHandler() {
