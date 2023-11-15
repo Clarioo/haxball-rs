@@ -10,8 +10,9 @@ var room = HBInit();
 room.pluginSpec = {
     name: `force-same-name`,
     author: `Clarioo`,
-    version: `1.0.1`,
+    version: `1.0.2`,
     config: {
+        authCode: ``,
         playersNotAffected: [],
     },
 };
@@ -41,6 +42,8 @@ function onPlayerJoinHandler(player) {
         conns[player.conn] !== undefined ? conns[player.conn] : player.name;
 
     if (room.getConfig().playersNotAffected.includes(player.name)) {
+        auths[player.auth] = player.name;
+        conns[player.conn] = player.name;
         return true;
     }
     
@@ -50,54 +53,77 @@ function onPlayerJoinHandler(player) {
 
         return false;
     }
-
     auths[player.auth] = player.name;
     conns[player.conn] = player.name;
 }
 
 function onPlayerChat(player, message) {
     // temp disabled
-
-    // const roles = room.getPlugin('sav/roles');
-    // if(roles.getPlayerRoles(player.id).includes("host") === false) {
-    //     room.sendAnnouncement(`You are not host.`);
-    //     return;
-    // }
-    // if (message.startsWith("!addException")) {
-    //     const playerName = message.split(" ")[1];
-    //     addPlayerException(playerName);
-    // }
-    // else if (message.startsWith("!removeException")) {
-    //     const playerName = message.split(" ")[1];
-    //     removePlayerException(playerName);
-    // }
+    var args = message.split(" ");
+    
+    if (message.startsWith("!") === true) {
+        if(args.length > 1){
+            if(args[1] === room.getConfig().authCode){
+                if (message.startsWith("!addException")) {
+                    const playerName = args[2];
+                    addPlayerException(player, playerName);
+                }
+                else if (message.startsWith("!removeException")) {
+                    const playerName = args[2];
+                    removePlayerException(player, playerName);
+                }
+                else if (message.startsWith("!removeAuth")) {
+                    const playerName = args[2];
+                    removePlayerFromAuths(player, playerName);
+                }
+            }
+            else {
+                room.sendAnnouncement(`Wrong auth code.`, player.id);
+            }
+        }
+    }
 }
 
-function addPlayerException(playerName) {
+function addPlayerException(sender, playerName) {
     if(playerName === undefined || playerName === "") {
-        room.sendAnnouncement(`Please specify player name.`);
+        room.sendAnnouncement(`Please specify player name.`, sender.id);
         return;
     }
     if(room.getConfig().playersNotAffected.includes(playerName)) {
-        room.sendAnnouncement(`Player ${playerName} is already in exception list.`);
+        room.sendAnnouncement(`Player ${playerName} is already in exception list.`, sender.id);
         return;
     }
     room.getConfig().playersNotAffected.push(playerName);
-    room.sendAnnouncement(`Player ${playerName} added to exception list.`);
+    room.sendAnnouncement(`Player ${playerName} added to exception list.`, sender.id);
 }
 
-function removePlayerException(playerName) {
+function removePlayerException(sender, playerName) {
     if(playerName === undefined || playerName === "") {
-        room.sendAnnouncement(`Please specify player name.`);
+        room.sendAnnouncement(`Please specify player name.`, sender.id);
         return;
     }
     const index = room.getConfig().playersNotAffected.indexOf(playerName);
     if (index > -1) {
         room.getConfig().playersNotAffected.splice(index, 1);
-        room.sendAnnouncement(`Player ${playerName} removed from exception list.`);
+        room.sendAnnouncement(`Player ${playerName} removed from exception list.`, sender.id);
     }
     else {
-        room.sendAnnouncement(`There is no player ${playerName} in exception list.`);
+        room.sendAnnouncement(`There is no player ${playerName} in exception list.`, sender.id);
+    }
+}
+
+function removePlayerFromAuths(sender, playerName) {
+    for(var key in auths) {
+        if(auths[key] === playerName) {
+            delete auths[key];
+            room.sendAnnouncement(`Player ${playerName} removed from auths list.`, sender.id);
+        }
+    }
+    for(var key in conns) {
+        if(conns[key] === playerName) {
+            delete conns[key];
+            room.sendAnnouncement(`Player ${playerName} removed from conns list.`, sender.id);
+        }
     }
 }
 
@@ -119,4 +145,4 @@ function onRestoreHandler(data) {
 room.onPlayerJoin = onPlayerJoinHandler;
 room.onPersist = onPersistHandler;
 room.onRestore = onRestoreHandler;
-// room.onPlayerChat = onPlayerChat;
+room.onPlayerChat = onPlayerChat;
