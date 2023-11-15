@@ -42,6 +42,8 @@ function onPlayerJoinHandler(player) {
         conns[player.conn] !== undefined ? conns[player.conn] : player.name;
 
     if (room.getConfig().playersNotAffected.includes(player.name)) {
+        auths[player.auth] = player.name;
+        conns[player.conn] = player.name;
         return true;
     }
     
@@ -51,7 +53,6 @@ function onPlayerJoinHandler(player) {
 
         return false;
     }
-
     auths[player.auth] = player.name;
     conns[player.conn] = player.name;
 }
