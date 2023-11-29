@@ -12,7 +12,7 @@ room.pluginSpec = {
 };
 
 // Nicks
-const mutedPlayers = [];
+const mutedPlayers = {};
 // Maps nick -> prefix
 const donators = {};
 // Maps nick -> prefix
@@ -119,7 +119,8 @@ function mutePlayer(playerName, sender){
             break;
         }
     }
-    mutedPlayers.push(playerName);
+    mutedPlayers[playerName] = 'Muted';
+    room.sendAnnouncement(`Player ${playerName} muted`, sender.id);
 }
 
 function unmutePlayer(playerName, sender){
@@ -130,10 +131,12 @@ function unmutePlayer(playerName, sender){
     
     for(var key in mutedPlayers) {
         if(key === playerName) {
+            delete mutedPlayers[playerName];
             room.sendAnnouncement(`Player ${playerName} unmuted`, sender.id);
             break;
         }
     }
+    room.sendAnnouncement(`Player ${playerName} is not muted`, sender.id);
 }
 
 function addDonator(playerName, sender){
