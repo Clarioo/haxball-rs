@@ -34,7 +34,10 @@ function onPlayerChat(player, message) {
         }
         // admin commands
         else {
-            executeCommand(player, args);
+            var executed = executeCommand(player, args);
+            if(executed === false) {
+                return false;
+            }        
         }
     }
     // normal chat
@@ -71,29 +74,32 @@ function executeCommand(player, args) {
             args.slice(2);
             playerName = args.join(' ');
 
-            if (message.startsWith("!mute")) {
+            if (args[0].startsWith("!mute")) {
                 mutePlayer(playerName, player);
             }
-            else if (message.startsWith("!unmute")) {
+            else if (args[0].startsWith("!unmute")) {
                 unmutePlayer(playerName, player);
             }
-            else if (message.startsWith("!add-donator")) {
+            else if (args[0].startsWith("!add-donator")) {
                 addDonator(playerName, player);
             }
-            else if (message.startsWith("!remove-donator")) {
+            else if (args[0].startsWith("!remove-donator")) {
                 removeDonator(playerName, player);
             }
-            else if (message.startsWith("!add-admin")) {
+            else if (args[0].startsWith("!add-admin")) {
                 addAdmin(playerName, player);
             }
-            else if (message.startsWith("!remove-admin")) {
+            else if (args[0].startsWith("!remove-admin")) {
                 removeAdmin(playerName, player);
             }
+            return false;
         }
         else {
             room.sendAnnouncement(`Wrong auth code.`, player.id);
+            return false;
         }
     }
+    return true;
 }
 
 function mutePlayer(playerName, sender){
