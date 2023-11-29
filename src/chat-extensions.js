@@ -70,26 +70,27 @@ function onPlayerChat(player, message) {
 function executeCommand(player, args) {
     if(args.length > 1){
         if(args[1] === room.getConfig().authCode){
+            var command = args[0];
             var playerName = "";
             args.slice(2);
             playerName = args.join(' ');
 
-            if (args[0].startsWith("!mute")) {
+            if (command.startsWith("!mute")) {
                 mutePlayer(playerName, player);
             }
-            else if (args[0].startsWith("!unmute")) {
+            else if (command.startsWith("!unmute")) {
                 unmutePlayer(playerName, player);
             }
-            else if (args[0].startsWith("!add-donator")) {
+            else if (command.startsWith("!add-donator")) {
                 addDonator(playerName, player);
             }
-            else if (args[0].startsWith("!remove-donator")) {
+            else if (command.startsWith("!remove-donator")) {
                 removeDonator(playerName, player);
             }
-            else if (args[0].startsWith("!add-admin")) {
+            else if (command.startsWith("!add-admin")) {
                 addAdmin(playerName, player);
             }
-            else if (args[0].startsWith("!remove-admin")) {
+            else if (command.startsWith("!remove-admin")) {
                 removeAdmin(playerName, player);
             }
             return false;
