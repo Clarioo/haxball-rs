@@ -72,8 +72,7 @@ function executeCommand(player, args) {
         if(args[1] === room.getConfig().authCode){
             var command = args[0];
             var playerName = "";
-            args.slice(2);
-            playerName = args.join(' ');
+            playerName = args.slice(2).join(' ');
 
             if (command.startsWith("!mute")) {
                 mutePlayer(playerName, player);
