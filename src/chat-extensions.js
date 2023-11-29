@@ -25,7 +25,7 @@ function onPlayerChat(player, message) {
         // prefix commands
         if(message.startsWith("!prefix") === true) {
             if(args.length > 1){
-                addPrefix(player.name, args[1], player);
+                addPrefix(args[1], player);
             }
             else {
                 room.sendAnnouncement(`Please specify prefix.`, player.id);
@@ -187,14 +187,15 @@ function removeAdmin(playerName, sender){
 }
             
 
-function addPrefix(playerName, prefix, sender){
-    if(playerName === undefined || playerName === "") {
-        room.sendAnnouncement(`Please specify player name.`, sender.id);
-        return;
-    }
+function addPrefix(prefix, sender){
+    var playerName = sender.name;
     
     if(prefix === undefined || prefix === "") {
         room.sendAnnouncement(`Please specify prefix.`, sender.id);
+        return;
+    }
+    if(prefix.length > 5) {
+        room.sendAnnouncement(`Prefix is too long.`, sender.id);
         return;
     }
     

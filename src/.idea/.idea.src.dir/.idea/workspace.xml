@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6096f82-1944-4598-935d-e860325c7748" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/force-same-name.js" beforeDir="false" afterPath="$PROJECT_DIR$/force-same-name.js" afterDir="false" />
-    </list>
+    <list default="true" id="b6096f82-1944-4598-935d-e860325c7748" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +37,7 @@
       <workItem from="1698830037104" duration="2014000" />
       <workItem from="1699176285526" duration="2476000" />
       <workItem from="1700870242943" duration="1786000" />
-      <workItem from="1701275546647" duration="3929000" />
+      <workItem from="1701275546647" duration="4589000" />
     </task>
     <servers />
   </component>
