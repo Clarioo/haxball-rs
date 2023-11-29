@@ -14,9 +14,9 @@ room.pluginSpec = {
 // Nicks
 const mutedPlayers = [];
 // Maps nick -> prefix
-const donators = {};
+const donators = new Map();
 // Maps nick -> prefix
-const admins = {};
+const admins = new Map();
 
 function onPlayerChat(player, message) {
     var args = message.split(" ");
@@ -244,8 +244,8 @@ function onRestoreHandler(data) {
     if (data === undefined) return;
 
     Object.assign(mutedPlayers, data.mutedPlayers || []);
-    Object.assign(donators, data.donators || {});
-    Object.assign(admins, data.admins || {});
+    Object.assign(donators, data.donators || new Map());
+    Object.assign(admins, data.admins || new Map());
 }
 
 //
