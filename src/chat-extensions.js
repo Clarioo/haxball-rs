@@ -254,7 +254,7 @@ function onPersistHandler() {
 function onRestoreHandler(data) {
     if (data === undefined) return;
 
-    Object.assign(mutedPlayers, data.mutedPlayers || []);
+    Object.assign(mutedPlayers, data.mutedPlayers || {});
     Object.assign(donators, data.donators || {});
     Object.assign(admins, data.admins || {});
 }
