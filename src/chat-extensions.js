@@ -6,8 +6,8 @@ room.pluginSpec = {
     version: `1.0.0`,
     config: {
         authCode: ``,
-        adminColor: `#0000FF`,
-        donatorColor: `#00FFF0`,
+        adminColor: `0x0000FF`,
+        donatorColor: `0x00FFF0`,
     },
 };
 
@@ -47,7 +47,7 @@ function onPlayerChat(player, message) {
             return false;
         }
         if(player.name in donators){
-            room.sendChat(
+            room.sendAnnouncement(
                 `${donators[player.name]} ${player.name}: ${message}`,
                 undefined,
                 room.getConfig().donatorColor,
@@ -56,7 +56,7 @@ function onPlayerChat(player, message) {
             return false;
         }
         if(player.name in admins){
-            room.sendChat(
+            room.sendAnnouncement(
                 `${admins[player.name]} ${player.name}: ${message}`,
                 undefined,
                 room.getConfig().adminColor,
@@ -76,23 +76,28 @@ function executeCommand(player, args) {
 
             if (command.startsWith("!mute")) {
                 mutePlayer(playerName, player);
+                return false;
             }
             else if (command.startsWith("!unmute")) {
                 unmutePlayer(playerName, player);
+                return false;
             }
             else if (command.startsWith("!add-donator")) {
                 addDonator(playerName, player);
+                return false;
             }
             else if (command.startsWith("!remove-donator")) {
                 removeDonator(playerName, player);
+                return false;
             }
             else if (command.startsWith("!add-admin")) {
                 addAdmin(playerName, player);
+                return false;
             }
             else if (command.startsWith("!remove-admin")) {
                 removeAdmin(playerName, player);
+                return false;
             }
-            return false;
         }
         else {
             room.sendAnnouncement(`Wrong auth code.`, player.id);
