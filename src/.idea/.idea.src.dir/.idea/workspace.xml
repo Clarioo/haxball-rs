@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6096f82-1944-4598-935d-e860325c7748" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../configs/.idea/.idea.configs.dir/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../configs/.idea/.idea.configs.dir/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../configs/.idea/.idea.configs.dir/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../configs/.idea/.idea.configs.dir/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src.dir/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src.dir/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src.dir/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src.dir/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.src.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-same-name.js" beforeDir="false" afterPath="$PROJECT_DIR$/force-same-name.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +39,8 @@
       <workItem from="1698789257401" duration="1306000" />
       <workItem from="1698830037104" duration="2014000" />
       <workItem from="1699176285526" duration="2476000" />
+      <workItem from="1700870242943" duration="1786000" />
+      <workItem from="1701275546647" duration="3929000" />
     </task>
     <servers />
   </component>

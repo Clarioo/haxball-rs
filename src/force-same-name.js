@@ -64,16 +64,16 @@ function onPlayerChat(player, message) {
     if (message.startsWith("!") === true) {
         if(args.length > 1){
             if(args[1] === room.getConfig().authCode){
+                var playerName = "";
+                args.slice(2);
+                playerName = args.join(' ');
                 if (message.startsWith("!addException")) {
-                    const playerName = args[2];
                     addPlayerException(player, playerName);
                 }
                 else if (message.startsWith("!removeException")) {
-                    const playerName = args[2];
                     removePlayerException(player, playerName);
                 }
                 else if (message.startsWith("!removeAuth")) {
-                    const playerName = args[2];
                     removePlayerFromAuths(player, playerName);
                 }
             }
