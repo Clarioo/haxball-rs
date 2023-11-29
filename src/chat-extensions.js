@@ -14,9 +14,9 @@ room.pluginSpec = {
 // Nicks
 const mutedPlayers = [];
 // Maps nick -> prefix
-const donators = new Map();
+const donators = {};
 // Maps nick -> prefix
-const admins = new Map();
+const admins = {};
 
 function onPlayerChat(player, message) {
     var args = message.split(" ");
@@ -144,7 +144,7 @@ function addDonator(playerName, sender){
         }
     }
     room.sendAnnouncement(`Player ${playerName} has now donator prefix`, sender.id);
-    donators.set(playerName, 'Donator');
+    donators[playerName] = 'Donator';
 }
 
 function removeDonator(playerName, sender){
@@ -176,7 +176,7 @@ function addAdmin(playerName, sender){
         }
     }
     room.sendAnnouncement(`Player ${playerName} has now admin prefix`, sender.id);
-    admins.set(playerName, 'Admin');
+    admins[playerName] = 'Admin';
 }
 
 function removeAdmin(playerName, sender){
@@ -247,8 +247,8 @@ function onRestoreHandler(data) {
     if (data === undefined) return;
 
     Object.assign(mutedPlayers, data.mutedPlayers || []);
-    Object.assign(donators, data.donators || new Map());
-    Object.assign(admins, data.admins || new Map());
+    Object.assign(donators, data.donators || {});
+    Object.assign(admins, data.admins || {});
 }
 
 //
