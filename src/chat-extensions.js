@@ -42,7 +42,7 @@ function onPlayerChat(player, message) {
     }
     // normal chat
     else {
-        if(isPlayerMuted(player.id)) {
+        if(player.name in mutedPlayers) {
             room.sendAnnouncement(`You are muted`, player.id);
             return false;
         }
@@ -232,15 +232,6 @@ function addPrefix(prefix, sender){
     }
     
     room.sendAnnouncement(`You have no permission to add prefix`, sender.id);
-}
-
-function isPlayerMuted(playerName){
-    for(var key in mutedPlayers) {
-        if(key === playerName) {
-            return true;
-        }
-    }
-    return false;
 }
 
 function onPersistHandler() {
