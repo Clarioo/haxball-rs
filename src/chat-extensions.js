@@ -144,6 +144,7 @@ function addDonator(playerName, sender){
             return;
         }
     }
+    room.sendAnnouncement(`Player ${playerName} has now donator prefix`, sender.id);
     donators.set(playerName, 'Donator');
 }
 
@@ -163,6 +164,7 @@ function removeDonator(playerName, sender){
 }
 
 function addAdmin(playerName, sender){
+    room.sendAnnouncement(`Adding admin for ${playerName} by ${sender.name}`, sender.id);
     if(playerName === undefined || playerName === "") {
         room.sendAnnouncement(`Please specify player name.`, sender.id);
         return;
@@ -174,6 +176,7 @@ function addAdmin(playerName, sender){
             return;
         }
     }
+    room.sendAnnouncement(`Player ${playerName} has now admin prefix`, sender.id);
     admins.set(playerName, 'Admin');
 }
 
