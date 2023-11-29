@@ -65,8 +65,7 @@ function onPlayerChat(player, message) {
         if(args.length > 1){
             if(args[1] === room.getConfig().authCode){
                 var playerName = "";
-                args.slice(2);
-                playerName = args.join(' ');
+                playerName = args.slice(2).join(' ');
                 if (message.startsWith("!addException")) {
                     addPlayerException(player, playerName);
                 }
