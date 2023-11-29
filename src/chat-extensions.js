@@ -35,7 +35,6 @@ function onPlayerChat(player, message) {
         // admin commands
         else {
             executeCommand(player, args);
-            return false;
         }
     }
     // normal chat
