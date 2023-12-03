@@ -20,6 +20,10 @@ const admins = {};
 
 function onPlayerChat(player, message) {
     var args = message.split(" ");
+    
+    if(message.startsWith("/kick_ratelimit") === true) {
+        return false;
+    }
     // commands
     if (message.startsWith("!") === true) {
         // prefix commands
